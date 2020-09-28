@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.database.Database;
 
 import java.sql.*;
 import java.util.Properties;
@@ -21,37 +22,38 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        String query = "SELECT * FROM agent";
-        p = new Properties();
-        p.setProperty("user", "root");
-        p.setProperty("password", "sasha19062001");
-        p.setProperty("useUnicode", "true");
-        p.setProperty("characterEncoding", "cp1251");
-        try {
-            // opening database connection to MySQL server
-            con = DriverManager.getConnection(url, p);
-
-            // getting Statement object to execute query
-            stmt = con.createStatement();
-
-            // executing SELECT query
-            rs = stmt.executeQuery(query);
-
-            while (rs.next()) {
-                String fullName = rs.getString(1);
-                String data = rs.getString(2);
-                System.out.println(fullName+" "+data);
-            }
-
-
-        } catch (SQLException sqlEx) {
-            sqlEx.printStackTrace();
-        } finally {
-            //close connection ,stmt and resultset here
-            try { con.close(); } catch(SQLException se) { /*can't do anything */ }
-            try { stmt.close(); } catch(SQLException se) { /*can't do anything */ }
-            try { rs.close(); } catch(SQLException se) { /*can't do anything */ }
-        }
+//        String query = "SELECT * FROM agent";
+////        p = new Properties();
+////        p.setProperty("user", "root");
+////        p.setProperty("password", "sasha19062001");
+////        p.setProperty("useUnicode", "true");
+////        p.setProperty("characterEncoding", "cp1251");
+////        try {
+////            // opening database connection to MySQL server
+////            con = DriverManager.getConnection(url, user, password);
+////
+////            // getting Statement object to execute query
+////            stmt = con.createStatement();
+////
+////            // executing SELECT query
+////            rs = stmt.executeQuery(query);
+////
+////            while (rs.next()) {
+////                String fullName = rs.getString(1);
+////                String data = rs.getString(2);
+////                System.out.println(fullName+" "+data);
+////            }
+////
+////
+////        } catch (SQLException sqlEx) {
+////            sqlEx.printStackTrace();
+////        } finally {
+////            //close connection ,stmt and resultset here
+////            try { con.close(); } catch(SQLException se) { /*can't do anything */ }
+////            try { stmt.close(); } catch(SQLException se) { /*can't do anything */ }
+////            try { rs.close(); } catch(SQLException se) { /*can't do anything */ }
+////        }
+        Database database = new Database();
     }
 
 
