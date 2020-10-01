@@ -8,11 +8,14 @@ public class Database {
     private static final String url = "jdbc:mysql://localhost:3306/second_lab?useUnicode=true&serverTimezone=UTC";
     private static final String user = "root";
     private static final String password = "sasha19062001";
+
     private static Connection con;
     private static Statement stmt;
+
     private List<Agent> agentList = new ArrayList<>();
     private List<Organization> organizationList = new ArrayList<>();
     private List<Staff> staffList = new ArrayList<>();
+    private List<Contract> contractList = new ArrayList<>();
 
     public Database() throws SQLException, ClassNotFoundException {
         try {
@@ -24,6 +27,7 @@ public class Database {
         setAgent();
         setOrganization();
         setStaff();
+        setContract();
         System.out.println("database created");
     }
 
@@ -82,6 +86,35 @@ public class Database {
         }
     }
 
+    private void setContract() throws ClassNotFoundException, SQLException {
+        String id;
+        String organizationID;
+        String agentName;
+        Date startDate;
+        Date endDate;
+        String sumCategory;
+        String sumCase;
+        String staffName;
+        try {
+            ResultSet resultSet = stmt.executeQuery("SELECT * FROM contracts");
+            while (resultSet.next()) {
+                id = resultSet.getString(1);
+                organizationID = resultSet.getString(2);
+                agentName = resultSet.getString(3);
+                startDate = resultSet.getDate(4);
+                endDate = resultSet.getDate(5);
+                sumCategory = resultSet.getString(6);
+                sumCase = resultSet.getString(7);
+                staffName = resultSet.getString(8);
+                contractList.add(new Contract(id, organizationID, agentName, startDate, endDate, sumCategory,
+                                              sumCase, staffName));
+                System.out.println(contractList.get(0).getStartDate());
+            }
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
+    }
+
     private void addAgent(Agent agent) throws ClassNotFoundException, SQLException {
         try {
             stmt.executeUpdate("INSERT INTO agent (agent_fullname, pasport_data)" +
@@ -98,7 +131,7 @@ public class Database {
                                   "bank_number, organization_specialty)" +
                                   " VALUES ('" + organization.getId() + "', '" + organization.getFullName() + "', '"
                                    + organization.getShortName() + "', '" + organization.getAddress() + "', '"
-                                   + organization.getBank_number() + "', '" + organization.getSpecialty() + "');");
+                                   + organization.getBankNumber() + "', '" + organization.getSpecialty() + "');");
             organizationList.add(organization);
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
@@ -116,13 +149,99 @@ public class Database {
         }
     }
 
-    private void deleteStaff(Staff staff) throws ClassNotFoundException, SQLException {
+    private void deleteAgent(Agent agent) throws ClassNotFoundException, SQLException {
         try {
-            stmt.executeUpdate("DELETE FROM staff WHERE full_name = '" + staff.getFullName() + "' AND age = '" +
-                                   staff.getAge() + "' AND risk_category = '" + staff.getRiskCategory() + "'");
-            staffList.add(staff);
+            stmt.executeUpdate("DELETE FROM agent WHERE fullname = '" + agent.getFullName() + "' AND age = '" +
+                                   agent.getPassportData() + "'");
+            agentList.remove(agent);
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
         }
     }
+
+    private void deleteOrganization(Organization organization) throws ClassNotFoundException, SQLException {
+        try {
+            stmt.executeUpdate("DELETE FROM organizations WHERE id = '" + organization.getId() +
+                                  "' AND organization_fullname = '" + organization.getFullName() + "' AND " +
+                                  " adress = '" + organization.getAddress() + "' AND bank_number = '" +
+                                   organization.getBankNumber() + "' AND organization_specialty = '" +
+                                   organization.getSpecialty() + "'");
+            organizationList.remove(organization);
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
+    }
+
+    private void deleteStaff(Staff staff) throws ClassNotFoundException, SQLException {
+        try {
+            stmt.executeUpdate("DELETE FROM staff WHERE full_name = '" + staff.getFullName() + "' AND age = '" +
+                    staff.getAge() + "' AND risk_category = '" + staff.getRiskCategory() + "'");
+            staffList.remove(staff);
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
+    }
+
+    private void editAgent(Agent agent, Agent newAgent) throws ClassNotFoundException, SQLException {
+        try {
+            stmt.executeUpdate("UPDATE agent SET agent_fullname = '" + newAgent.getFullName() + "', pasport_data = '" + newAgent.getPassportData() +
+                                  "' WHERE agent_fullname = '" + agent.getFullName() + "' AND pasport_data = '" +
+                                    agent.getPassportData() + "'");
+            for(int i = 0; i < agentList.size(); i++){
+                if(agentList.get(i).equals(agent)){
+                    agentList.set(i, newAgent);
+                    break;
+                }
+            }
+        } catch (SQLException sqlEX){
+            sqlEX.printStackTrace();
+        }
+    }
+
+    private void editOrganization(Organization organization,
+                                  Organization newOrganization) throws ClassNotFoundException, SQLException {
+        try {
+            stmt.executeUpdate("UPDATE organizations SET id = '" + newOrganization.getId() + "', " +
+                                  "organization_fullname = '" + newOrganization.getFullName() + "', " +
+                                  "organization_shortname = '" + newOrganization.getShortName() + "', " +
+                                  "adress = '" + newOrganization.getAddress() + "', " +
+                                  "bank_number = '" + newOrganization.getBankNumber() + "', " +
+                                  "organization_specialty = '" + newOrganization.getSpecialty() + "' " +
+                                  " WHERE id = '" + organization.getId() + "' AND " +
+                                  "organization_fullname = '" + organization.getFullName() + "' AND " +
+                                  "organization_shortname = '" + organization.getShortName() + "' AND " +
+                                  "adress = '" + organization.getAddress() + "' AND " +
+                                  "bank_number = '" + organization.getBankNumber() + "' AND "+
+                                  "organization_specialty = '" + organization.getSpecialty() + "'");
+            for(int i = 0; i < organizationList.size(); i++){
+                if(organizationList.get(i).equals(organization)){
+                    organizationList.set(i, newOrganization);
+                    break;
+                }
+            }
+        } catch (SQLException sqlEX){
+            sqlEX.printStackTrace();
+        }
+    }
+
+    private void editStaff(Staff staff, Staff newStaff) throws ClassNotFoundException, SQLException {
+        try {
+            stmt.executeUpdate("UPDATE staff SET full_name = '" + newStaff.getFullName() + "', " +
+                                  "age = '" + newStaff.getAge() + "', " +
+                                  "risk_category = '" + newStaff.getRiskCategory() + "'" +
+                                  " WHERE full_name = '" + staff.getFullName() + "' AND " +
+                                  "age = '" + staff.getAge() + "' AND " +
+                                  "risk_category = '" + staff.getRiskCategory() + "'");
+            for(int i = 0; i < staffList.size(); i++){
+                if(staffList.get(i).equals(staff)){
+                    staffList.set(i, newStaff);
+                    System.out.println(staffList.get(i).getFullName());
+                    break;
+                }
+            }
+        } catch (SQLException sqlEX){
+            sqlEX.printStackTrace();
+        }
+    }
+
 }

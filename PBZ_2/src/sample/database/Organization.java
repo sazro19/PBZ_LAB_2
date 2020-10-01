@@ -34,7 +34,7 @@ public class Organization {
         return this.address;
     }
 
-    public String getBank_number() {
+    public String getBankNumber() {
         return this.bank_number;
     }
 
