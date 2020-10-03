@@ -53,7 +53,10 @@ public class Main extends Application {
 ////            try { stmt.close(); } catch(SQLException se) { /*can't do anything */ }
 ////            try { rs.close(); } catch(SQLException se) { /*can't do anything */ }
 ////        }
-        Database database = new Database();
+        Parent root = FXMLLoader.load(getClass().getResource("view/sample.fxml"));
+        primaryStage.setScene(new Scene(root, 600, 350));
+        primaryStage.show();
+
     }
 
 
