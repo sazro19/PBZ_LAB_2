@@ -12,7 +12,7 @@ import sample.database.Database;
 
 import java.sql.SQLException;
 
-public class ListController {
+public class agentListController {
     private Database database;
 
     @FXML
@@ -24,13 +24,16 @@ public class ListController {
     @FXML
     private TableColumn<Agent, String> passportDataColumn;
 
-    private void hideTables() {
-        agentTableView.setVisible(false);
-    }
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private Button deleteButton;
+
+    @FXML
+    private Button editButton;
 
     private void createAgentTable() {
-        hideTables();
-        agentTableView.setVisible(true);
         System.out.println(database.getAgentList().size());
         ObservableList<Agent> test = FXCollections.observableArrayList(database.getAgentList());
         agentTableView.setItems(test);
@@ -38,19 +41,9 @@ public class ListController {
         passportDataColumn.setCellValueFactory(new PropertyValueFactory<Agent, String>("passportData"));
     }
 
-    private void setInterface() {
-        switch (Controller.getPointerInterface()) {
-            case 3: {
-                createAgentTable();
-                break;
-            }
-        }
-    }
-
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
-        hideTables();
         database = new Database();
-        setInterface();
+        createAgentTable();
     }
 }

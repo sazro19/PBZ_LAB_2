@@ -5,7 +5,7 @@ public class Organization {
     private String fullName;
     private String shortName;
     private String address;
-    private String bank_number;
+    private String bankNumber;
     private String specialty;
 
     public Organization(String id, String fullName, String shortName,
@@ -14,7 +14,7 @@ public class Organization {
         this.fullName = fullName;
         this.shortName = shortName;
         this.address = address;
-        this.bank_number = bank_number;
+        this.bankNumber = bank_number;
         this.specialty = specialty;
     }
 
@@ -35,7 +35,7 @@ public class Organization {
     }
 
     public String getBankNumber() {
-        return this.bank_number;
+        return this.bankNumber;
     }
 
     public String getSpecialty() {

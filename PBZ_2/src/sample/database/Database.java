@@ -248,4 +248,8 @@ public class Database {
         return agentList;
     }
 
+    public List<Staff> getStaffList() { return staffList; }
+
+    public List<Organization> getOrganizationList() { return organizationList; }
+
 }

@@ -32,10 +32,9 @@ public class Controller {
     void initialize() {
         organizationOperationButton.setOnAction(event -> {
             try {
-                pointerInterface = 1;
-                Parent root = FXMLLoader.load(Main.class.getResource("view/list.fxml"));
+                Parent root = FXMLLoader.load(Main.class.getResource("view/organizationList.fxml"));
                 Stage stage = (Stage) organizationOperationButton.getScene().getWindow();
-                stage.setTitle("Organizationss");
+                stage.setTitle("Organizations");
                 stage.setScene(new Scene(root, 650, 350));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -44,8 +43,7 @@ public class Controller {
 
         agentOperationButton.setOnAction(event -> {
             try {
-                pointerInterface = 3;
-                Parent root = FXMLLoader.load(Main.class.getResource("view/list.fxml"));
+                Parent root = FXMLLoader.load(Main.class.getResource("view/agentList.fxml"));
                 Stage stage = (Stage) agentOperationButton.getScene().getWindow();
                 stage.setTitle("Agents");
                 stage.setScene(new Scene(root, 650, 350));
@@ -56,8 +54,7 @@ public class Controller {
 
         staffOperationButton.setOnAction(event -> {
             try {
-                pointerInterface = 2;
-                Parent root = FXMLLoader.load(Main.class.getResource("view/list.fxml"));
+                Parent root = FXMLLoader.load(Main.class.getResource("view/staffList.fxml"));
                 Stage stage = (Stage) staffOperationButton.getScene().getWindow();
                 stage.setTitle("Staff");
                 stage.setScene(new Scene(root, 650, 350));

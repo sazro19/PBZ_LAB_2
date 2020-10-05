@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.staffListController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane fx:id="mainPane" prefHeight="326.0" prefWidth="564.0">
+         <children>
+            <TableView fx:id="staffTableView" layoutX="61.0" layoutY="34.0" prefHeight="200.0" prefWidth="373.0">
+              <columns>
+                <TableColumn fx:id="fullnameColumn" prefWidth="101.0" text="ФИО" />
+                <TableColumn fx:id="ageColumn" prefWidth="180.0" text="Возраст" />
+                  <TableColumn fx:id="riskCategoryColumn" prefWidth="91.0" text="Категория" />
+              </columns>
+            </TableView>
+            <Button fx:id="addButton" layoutX="61.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="add" />
+            <Button fx:id="deleteButton" layoutX="213.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="delete" />
+            <Button fx:id="editButton" layoutX="364.0" layoutY="252.0" mnemonicParsing="false" prefWidth="70.0" text="edit" />
+         </children></Pane>
+   </children>
+</GridPane>

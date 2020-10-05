@@ -14,8 +14,8 @@
       <Pane fx:id="mainPane" prefHeight="245.0" prefWidth="404.0">
          <children>
             <Label layoutX="123.0" layoutY="14.0" text="Учет договоров страхования" />
-            <Button fx:id="organizationOperationButton" layoutX="110.0" layoutY="60.0" mnemonicParsing="false" text="Операции над организациями" />
-            <Button fx:id="agentOperationButton" layoutX="92.0" layoutY="110.0" mnemonicParsing="false" text="Операции над агентами страхования" />
+            <Button fx:id="organizationOperationButton" layoutX="109.0" layoutY="56.0" mnemonicParsing="false" text="Операции над организациями" />
+            <Button fx:id="agentOperationButton" layoutX="91.0" layoutY="110.0" mnemonicParsing="false" text="Операции над агентами страхования" />
             <Button fx:id="staffOperationButton" layoutX="75.0" layoutY="158.0" mnemonicParsing="false" text="Операции над страхуемыми сотрудниками" />
          </children></Pane>
    </children>
