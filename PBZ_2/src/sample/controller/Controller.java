@@ -8,16 +8,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import sample.Main;
+import sample.database.Database;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Controller {
 
-    private static int pointerInterface;
-
-    public static int getPointerInterface() {
-        return pointerInterface;
-    }
+    private static Database database;
 
     @FXML
     private Button organizationOperationButton;
@@ -29,7 +27,8 @@ public class Controller {
     private Button staffOperationButton;
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException, ClassNotFoundException {
+        database = new Database();
         organizationOperationButton.setOnAction(event -> {
             try {
                 Parent root = FXMLLoader.load(Main.class.getResource("view/organizationList.fxml"));
@@ -63,5 +62,9 @@ public class Controller {
             }
         });
 
+    }
+
+    public static Database getDatabase() {
+        return database;
     }
 }

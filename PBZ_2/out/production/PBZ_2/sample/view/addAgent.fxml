@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.AddAgentController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -18,8 +18,8 @@
             <Label layoutX="55.0" layoutY="123.0" text="Пасспортные данные:" />
             <TextField fx:id="fullnameTextField" layoutX="203.0" layoutY="68.0" />
             <TextField fx:id="passportDataTextField" layoutX="203.0" layoutY="119.0" />
-            <Button layoutX="89.0" layoutY="184.0" mnemonicParsing="false" text="Добавить" />
-            <Button layoutX="251.0" layoutY="184.0" mnemonicParsing="false" text="Назад" />
+            <Button fx:id="addButton" layoutX="89.0" layoutY="184.0" mnemonicParsing="false" text="Добавить" />
+            <Button fx:id="cancelButton" layoutX="251.0" layoutY="184.0" mnemonicParsing="false" text="Назад" />
          </children></Pane>
    </children>
 </GridPane>

@@ -11,7 +11,7 @@ import sample.database.Organization;
 
 import java.sql.SQLException;
 
-public class organizationListController {
+public class OrganizationListController {
     private Database database;
 
     @FXML

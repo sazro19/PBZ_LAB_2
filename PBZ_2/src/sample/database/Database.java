@@ -28,10 +28,9 @@ public class Database {
         setOrganization();
         setStaff();
         setContract();
-        System.out.println("database created");
     }
 
-    private void setAgent() throws SQLException {
+    public void setAgent() throws SQLException {
         String fullName;
         String passportData;
         try {
@@ -46,7 +45,7 @@ public class Database {
         }
     }
 
-    private void setOrganization() throws SQLException {
+    public void setOrganization() throws SQLException {
         String id;
         String fullName;
         String shortName;
@@ -69,7 +68,7 @@ public class Database {
         }
     }
 
-    private void setStaff() throws SQLException {
+    public void setStaff() throws SQLException {
         String fullName;
         Integer age;
         String riskCategory;
@@ -86,7 +85,7 @@ public class Database {
         }
     }
 
-    private void setContract() throws SQLException {
+    public void setContract() throws SQLException {
         String id;
         String organizationID;
         String agentName;
@@ -108,14 +107,13 @@ public class Database {
                 staffName = resultSet.getString(8);
                 contractList.add(new Contract(id, organizationID, agentName, startDate, endDate, sumCategory,
                                               sumCase, staffName));
-                System.out.println(contractList.get(0).getStartDate());
             }
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
         }
     }
 
-    private void addAgent(Agent agent) throws SQLException {
+    public void addAgent(Agent agent) throws SQLException {
         try {
             stmt.executeUpdate("INSERT INTO agent (agent_fullname, pasport_data)" +
                                   " VALUES ('" + agent.getFullName() + "', '" + agent.getPassportData() + "');");
@@ -125,7 +123,7 @@ public class Database {
         }
     }
 
-    private void addOrganization(Organization organization) throws SQLException {
+    public void addOrganization(Organization organization) throws SQLException {
         try {
             stmt.executeUpdate("INSERT INTO organizations (id, organization_fullname, organization_shortname, adress," +
                                   "bank_number, organization_specialty)" +
@@ -138,7 +136,7 @@ public class Database {
         }
     }
 
-    private void addStaff(Staff staff) throws SQLException {
+    public void addStaff(Staff staff) throws SQLException {
         try {
             stmt.executeUpdate("INSERT INTO staff (full_name, age, risk_category)" +
                                   " VALUES ('" + staff.getFullName() + "', '" + staff.getAge() + "', '" +
@@ -149,9 +147,9 @@ public class Database {
         }
     }
 
-    private void deleteAgent(Agent agent) throws SQLException {
+    public void deleteAgent(Agent agent) throws SQLException {
         try {
-            stmt.executeUpdate("DELETE FROM agent WHERE fullname = '" + agent.getFullName() + "' AND age = '" +
+            stmt.executeUpdate("DELETE FROM agent WHERE agent_fullname = '" + agent.getFullName() + "' AND pasport_data = '" +
                                    agent.getPassportData() + "'");
             agentList.remove(agent);
         } catch (SQLException sqlEx) {
@@ -159,7 +157,7 @@ public class Database {
         }
     }
 
-    private void deleteOrganization(Organization organization) throws SQLException {
+    public void deleteOrganization(Organization organization) throws SQLException {
         try {
             stmt.executeUpdate("DELETE FROM organizations WHERE id = '" + organization.getId() +
                                   "' AND organization_fullname = '" + organization.getFullName() + "' AND " +
@@ -172,7 +170,7 @@ public class Database {
         }
     }
 
-    private void deleteStaff(Staff staff) throws SQLException {
+    public void deleteStaff(Staff staff) throws SQLException {
         try {
             stmt.executeUpdate("DELETE FROM staff WHERE full_name = '" + staff.getFullName() + "' AND age = '" +
                     staff.getAge() + "' AND risk_category = '" + staff.getRiskCategory() + "'");
@@ -182,7 +180,7 @@ public class Database {
         }
     }
 
-    private void editAgent(Agent agent, Agent newAgent) throws SQLException {
+    public void editAgent(Agent agent, Agent newAgent) throws SQLException {
         try {
             stmt.executeUpdate("UPDATE agent SET agent_fullname = '" + newAgent.getFullName() + "', pasport_data = '" + newAgent.getPassportData() +
                                   "' WHERE agent_fullname = '" + agent.getFullName() + "' AND pasport_data = '" +
@@ -198,7 +196,7 @@ public class Database {
         }
     }
 
-    private void editOrganization(Organization organization,
+    public void editOrganization(Organization organization,
                                   Organization newOrganization) throws SQLException {
         try {
             stmt.executeUpdate("UPDATE organizations SET id = '" + newOrganization.getId() + "', " +
@@ -224,7 +222,7 @@ public class Database {
         }
     }
 
-    private void editStaff(Staff staff, Staff newStaff) throws SQLException {
+    public void editStaff(Staff staff, Staff newStaff) throws SQLException {
         try {
             stmt.executeUpdate("UPDATE staff SET full_name = '" + newStaff.getFullName() + "', " +
                                   "age = '" + newStaff.getAge() + "', " +
@@ -235,7 +233,6 @@ public class Database {
             for(int i = 0; i < staffList.size(); i++){
                 if(staffList.get(i).equals(staff)){
                     staffList.set(i, newStaff);
-                    System.out.println(staffList.get(i).getFullName());
                     break;
                 }
             }

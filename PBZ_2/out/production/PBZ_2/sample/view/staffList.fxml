@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.staffListController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.StaffListController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -20,9 +20,10 @@
                   <TableColumn fx:id="riskCategoryColumn" prefWidth="91.0" text="Категория" />
               </columns>
             </TableView>
-            <Button fx:id="addButton" layoutX="61.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="add" />
-            <Button fx:id="deleteButton" layoutX="213.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="delete" />
-            <Button fx:id="editButton" layoutX="364.0" layoutY="252.0" mnemonicParsing="false" prefWidth="70.0" text="edit" />
+            <Button fx:id="addButton" layoutX="61.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Добавить" />
+            <Button fx:id="deleteButton" layoutX="193.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Удалить" />
+            <Button fx:id="editButton" layoutX="324.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="Редактировать" />
+            <Button fx:id="cancelButton" layoutX="222.0" layoutY="287.0" mnemonicParsing="false" text="Назад" />
          </children></Pane>
    </children>
 </GridPane>
