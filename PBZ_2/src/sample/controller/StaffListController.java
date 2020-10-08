@@ -50,6 +50,7 @@ public class StaffListController {
     private static ObservableList<Staff> staffList;
 
     private void createStaffTable() {
+        staffList = FXCollections.observableArrayList(Controller.getDatabase().getStaffList());
         staffTableView.setItems(staffList);
         fullnameColumn.setCellValueFactory(new PropertyValueFactory<Staff, String>("fullName"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<Staff, Integer>("age"));
@@ -58,7 +59,6 @@ public class StaffListController {
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
-        staffList = FXCollections.observableArrayList(Controller.getDatabase().getStaffList());
         createStaffTable();
         addButton.setOnAction(event -> {
             try {

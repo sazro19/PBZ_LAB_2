@@ -46,7 +46,7 @@ public class AgentListController {
     private static ObservableList<Agent> agents;
 
     private void createAgentTable() {
-        System.out.println(Controller.getDatabase().getAgentList().size());
+        agents = FXCollections.observableArrayList(Controller.getDatabase().getAgentList());
         agentTableView.setItems(agents);
         fullnameColumn.setCellValueFactory(new PropertyValueFactory<Agent, String>("fullName"));
         passportDataColumn.setCellValueFactory(new PropertyValueFactory<Agent, String>("passportData"));
@@ -54,7 +54,6 @@ public class AgentListController {
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
-        agents = FXCollections.observableArrayList(Controller.getDatabase().getAgentList());
         createAgentTable();
         addButton.setOnAction(event -> {
             try {

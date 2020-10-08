@@ -26,6 +26,7 @@
             <Button fx:id="addButton" layoutX="25.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Добавить" />
             <Button fx:id="deleteButton" layoutX="307.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Удалить" />
             <Button fx:id="editButton" layoutX="569.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Редактировать" />
+            <Button fx:id="cancelButton" layoutX="316.0" layoutY="287.0" mnemonicParsing="false" text="Назад" />
          </children></Pane>
    </children>
 </GridPane>

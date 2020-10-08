@@ -34,7 +34,7 @@ public class Controller {
                 Parent root = FXMLLoader.load(Main.class.getResource("view/organizationList.fxml"));
                 Stage stage = (Stage) organizationOperationButton.getScene().getWindow();
                 stage.setTitle("Organizations");
-                stage.setScene(new Scene(root, 650, 350));
+                stage.setScene(new Scene(root, 1050, 350));
             } catch (IOException e) {
                 e.printStackTrace();
             }
