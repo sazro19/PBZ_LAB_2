@@ -133,7 +133,7 @@ public class OrganizationListController {
         alert.showAndWait();
     }
 
-    public Organization getSelectedOrganization() {
+    public static Organization getSelectedOrganization() {
         return selectedOrganization;
     }
 }

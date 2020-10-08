@@ -18,7 +18,7 @@
             <Label layoutX="50.0" layoutY="123.0" text="Полное наименование:" />
             <TextField fx:id="idTextField" layoutX="203.0" layoutY="68.0" />
             <TextField fx:id="fullnameTextField" layoutX="203.0" layoutY="119.0" />
-            <Button fx:id="addButton" layoutX="90.0" layoutY="369.0" mnemonicParsing="false" text="Добавить" />
+            <Button fx:id="editButton" layoutX="90.0" layoutY="369.0" mnemonicParsing="false" text="Добавить" />
             <Button fx:id="cancelButton" layoutX="253.0" layoutY="369.0" mnemonicParsing="false" text="Назад" />
             <Label layoutX="49.0" layoutY="170.0" text="Краткое наименование:" />
             <TextField fx:id="shortnameTextField" layoutX="203.0" layoutY="166.0" />
