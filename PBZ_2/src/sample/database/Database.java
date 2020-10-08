@@ -1,5 +1,8 @@
 package sample.database;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -241,6 +244,40 @@ public class Database {
         }
     }
 
+    public ObservableList<String> getOrganizationNameFromContracts() {
+        ObservableList<String> organizations = FXCollections.observableArrayList();
+        try {
+            ResultSet resultSet = stmt.executeQuery("SELECT DISTINCT organization_fullname \n" +
+                                                       "FROM organizations\n" +
+                                                       "JOIN contracts ON contracts.organization_id = organizations.id");
+            while (resultSet.next()) {
+                organizations.add(resultSet.getString(1));
+            }
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
+        return organizations;
+    }
+
+    public ObservableList<Contract> searchContracts(String organizationName, Date startDate) {
+        ObservableList<Contract> contracts = FXCollections.observableArrayList();
+        try {
+            ResultSet resultSet = stmt.executeQuery("SELECT * \n" +
+                                                       "FROM contracts\n" +
+                                                       "JOIN organizations ON organizations.id = contracts.organization_id \n" +
+                                                       "WHERE organization_fullname = '" + organizationName + "' AND " +
+                                                       "start_date = '" + startDate + "'");
+            while (resultSet.next()) {
+                contracts.add(new Contract(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+                                           resultSet.getDate(4), resultSet.getDate(5), resultSet.getString(6),
+                                           resultSet.getString(7), resultSet.getString(8)));
+            }
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
+        return contracts;
+    }
+
     public List<Agent> getAgentList(){
         return agentList;
     }
@@ -248,5 +285,7 @@ public class Database {
     public List<Staff> getStaffList() { return staffList; }
 
     public List<Organization> getOrganizationList() { return organizationList; }
+
+    public List<Contract> getContractList() { return contractList; }
 
 }

@@ -54,7 +54,8 @@ public class EditOrganizationController {
                                                                 shortnameTextField.getText(), addressTextField.getText(),
                                                                 bankNumberTextField.getText(),
                                                                 specialtyTextField.getText());
-                Controller.getDatabase().editOrganization(OrganizationListController.getSelectedOrganization(), newOrganization);
+                Controller.getDatabase().editOrganization(OrganizationListController.getSelectedOrganization(),
+                                                          newOrganization);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -62,7 +63,7 @@ public class EditOrganizationController {
                 Parent root = FXMLLoader.load(Main.class.getResource("view/organizationList.fxml"));
                 Stage stage = (Stage) editButton.getScene().getWindow();
                 stage.setTitle("Organizations");
-                stage.setScene(new Scene(root, 650, 550));
+                stage.setScene(new Scene(root, 750, 550));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -72,7 +73,7 @@ public class EditOrganizationController {
                 Parent root = FXMLLoader.load(Main.class.getResource("view/organizationList.fxml"));
                 Stage stage = (Stage) cancelButton.getScene().getWindow();
                 stage.setTitle("Organizations");
-                stage.setScene(new Scene(root, 650, 350));
+                stage.setScene(new Scene(root, 750, 550));
             } catch (IOException e) {
                 e.printStackTrace();
             }

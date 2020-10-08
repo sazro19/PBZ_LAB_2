@@ -27,6 +27,9 @@ public class Controller {
     private Button staffOperationButton;
 
     @FXML
+    private Button contractsButton;
+
+    @FXML
     void initialize() throws SQLException, ClassNotFoundException {
         database = new Database();
         organizationOperationButton.setOnAction(event -> {
@@ -34,7 +37,7 @@ public class Controller {
                 Parent root = FXMLLoader.load(Main.class.getResource("view/organizationList.fxml"));
                 Stage stage = (Stage) organizationOperationButton.getScene().getWindow();
                 stage.setTitle("Organizations");
-                stage.setScene(new Scene(root, 1050, 350));
+                stage.setScene(new Scene(root, 750, 350));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -57,6 +60,17 @@ public class Controller {
                 Stage stage = (Stage) staffOperationButton.getScene().getWindow();
                 stage.setTitle("Staff");
                 stage.setScene(new Scene(root, 650, 350));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        contractsButton.setOnAction(event -> {
+            try {
+                Parent root = FXMLLoader.load(Main.class.getResource("view/contractsList.fxml"));
+                Stage stage = (Stage) contractsButton.getScene().getWindow();
+                stage.setTitle("Contracts");
+                stage.setScene(new Scene(root, 950, 350));
             } catch (IOException e) {
                 e.printStackTrace();
             }

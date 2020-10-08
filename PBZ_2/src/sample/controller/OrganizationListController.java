@@ -90,7 +90,7 @@ public class OrganizationListController {
                     Parent root = FXMLLoader.load(Main.class.getResource("view/editOrganization.fxml"));
                     Stage stage = (Stage) editButton.getScene().getWindow();
                     stage.setTitle("Edit");
-                    stage.setScene(new Scene(root, 650, 350));
+                    stage.setScene(new Scene(root, 650, 650));
                 } else {
                     showError();
                 }

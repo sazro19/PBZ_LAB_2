@@ -17,6 +17,7 @@
             <Button fx:id="organizationOperationButton" layoutX="109.0" layoutY="56.0" mnemonicParsing="false" text="Операции над организациями" />
             <Button fx:id="agentOperationButton" layoutX="91.0" layoutY="110.0" mnemonicParsing="false" text="Операции над агентами страхования" />
             <Button fx:id="staffOperationButton" layoutX="75.0" layoutY="158.0" mnemonicParsing="false" text="Операции над страхуемыми сотрудниками" />
+            <Button fx:id="contractsButton" layoutX="165.0" layoutY="206.0" mnemonicParsing="false" text="Контракты" />
          </children></Pane>
    </children>
 </GridPane>

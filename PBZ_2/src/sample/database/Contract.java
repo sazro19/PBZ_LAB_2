@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Contract {
     private String id;
-    private String organizationID;
+    private String organizationId;
     private String agentName;
     private Date startDate;
     private Date endDate;
@@ -15,7 +15,7 @@ public class Contract {
     public Contract(String id, String organizationID, String agentName, Date startDate, Date endDate,
                     String sum_category, String sum_case, String staffName){
         this.id = id;
-        this.organizationID = organizationID;
+        this.organizationId = organizationID;
         this.agentName = agentName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -28,8 +28,8 @@ public class Contract {
         return id;
     }
 
-    public String getOrganizationID() {
-        return organizationID;
+    public String getOrganizationId() {
+        return organizationId;
     }
 
     public String getAgentName() {

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ContractsListController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane fx:id="mainPane" prefHeight="326.0" prefWidth="861.0">
+         <children>
+            <TableView fx:id="contractTableView" layoutX="25.0" layoutY="34.0" prefHeight="200.0" prefWidth="807.0">
+              <columns>
+                <TableColumn fx:id="idColumn" prefWidth="34.0" text="id" />
+                <TableColumn fx:id="organizationIdColumn" prefWidth="95.0" text="id организации" />
+                  <TableColumn fx:id="agentFullnameColumn" prefWidth="134.99998474121094" text="ФИО агента" />
+                  <TableColumn fx:id="startDateColumn" prefWidth="156.0" text="Дата заключения" />
+                  <TableColumn fx:id="endDateColumn" prefWidth="111.0" text="Дата окончания" />
+                  <TableColumn fx:id="sumCategoryColumn" prefWidth="114.0" text="Сумма выплат" />
+                  <TableColumn fx:id="sumCaseColumn" prefWidth="78.0" text="Выплаты" />
+                  <TableColumn fx:id="staffFullnameColumn" prefWidth="83.0" text="Сотрудник" />
+              </columns>
+            </TableView>
+            <Button fx:id="contractSearchButton" layoutX="25.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="116.0" text="Поиск договоров" />
+            <Button fx:id="agentSearchButton" layoutX="378.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Поиск агентов" />
+            <Button fx:id="sumSearchButton" layoutX="727.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Поиск выплат" />
+            <Button fx:id="cancelButton" layoutX="406.0" layoutY="287.0" mnemonicParsing="false" text="Назад" />
+         </children></Pane>
+   </children>
+</GridPane>
