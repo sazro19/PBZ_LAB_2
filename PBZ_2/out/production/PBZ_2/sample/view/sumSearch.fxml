@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.ContractSearchController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.SumSearchController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -14,17 +14,16 @@
       <Pane fx:id="mainPane" prefHeight="223.0" prefWidth="601.0">
          <children>
             <Label layoutX="158.0" layoutY="14.0" text="Введите данные" />
-            <Label layoutX="15.0" layoutY="72.0" text="Название организации:" />
+            <Label layoutX="15.0" layoutY="72.0" text="Категория работника:" />
             <Label layoutX="14.0" layoutY="123.0" text="Дата заключения:" />
             <Button fx:id="searchButton" layoutX="80.0" layoutY="180.0" mnemonicParsing="false" text="Найти" />
             <Button fx:id="cancelButton" layoutX="253.0" layoutY="180.0" mnemonicParsing="false" text="Назад" />
-            <ComboBox fx:id="organizationComboBox" layoutX="158.0" layoutY="68.0" prefWidth="150.0" />
+            <ComboBox fx:id="categoryComboBox" layoutX="158.0" layoutY="68.0" prefWidth="150.0" />
             <DatePicker fx:id="startDatePicker" layoutX="158.0" layoutY="119.0" prefHeight="25.0" prefWidth="150.0" />
             <TableView fx:id="resultTableView" layoutX="325.0" layoutY="12.0" prefHeight="200.0" prefWidth="272.0">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="52.0" text="id" />
-                <TableColumn fx:id="startDateColumn" prefWidth="106.0" text="дата заключеня" />
-                  <TableColumn fx:id="endDateColumn" prefWidth="113.0" text="Дата окончания" />
+                <TableColumn fx:id="startDateColumn" prefWidth="132.0" text="дата заключеня" />
+                  <TableColumn fx:id="sumColumn" prefWidth="139.0" text="Выплата" />
               </columns>
             </TableView>
          </children></Pane>

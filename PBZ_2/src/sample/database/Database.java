@@ -278,6 +278,44 @@ public class Database {
         return contracts;
     }
 
+    public ObservableList<Contract> searchAgents(String organizationName, Date startDate) {
+        ObservableList<Contract> agentsWithOrganizations = FXCollections.observableArrayList();
+        try {
+            ResultSet resultSet = stmt.executeQuery("SELECT * \n" +
+                                                       "FROM contracts\n" +
+                                                       "JOIN organizations ON organizations.id = contracts.organization_id \n" +
+                                                       "WHERE organization_fullname = '" + organizationName + "' AND " +
+                                                       "start_date = '" + startDate + "'");
+            while (resultSet.next()) {
+                agentsWithOrganizations.add(new Contract(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+                        resultSet.getDate(4), resultSet.getDate(5), resultSet.getString(6),
+                        resultSet.getString(7), resultSet.getString(8)));
+            }
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
+        return agentsWithOrganizations;
+    }
+
+    public ObservableList<Contract> searchSum(String category, Date startDate) {
+        ObservableList<Contract> sumList = FXCollections.observableArrayList();
+        try {
+            ResultSet resultSet = stmt.executeQuery("SELECT * \n" +
+                                                       "FROM contracts\n" +
+                                                       "JOIN staff ON staff.full_name = contracts.staff_name \n" +
+                                                       "WHERE risk_category = '" + category + "' AND " +
+                                                       "start_date = '" + startDate + "'");
+            while (resultSet.next()) {
+                sumList.add(new Contract(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+                        resultSet.getDate(4), resultSet.getDate(5), resultSet.getString(6),
+                        resultSet.getString(7), resultSet.getString(8)));
+            }
+        } catch (SQLException sqlEx) {
+            sqlEx.printStackTrace();
+        }
+        return sumList;
+    }
+
     public List<Agent> getAgentList(){
         return agentList;
     }

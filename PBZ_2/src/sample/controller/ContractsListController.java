@@ -100,7 +100,14 @@ public class ContractsListController {
         });
 
         agentSearchButton.setOnAction(event -> {
-
+            try {
+                Parent root = FXMLLoader.load(Main.class.getResource("view/agentSearch.fxml"));
+                Stage stage = (Stage) sumSearchButton.getScene().getWindow();
+                stage.setTitle("Search");
+                stage.setScene(new Scene(root, 650, 650));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         cancelButton.setOnAction(event -> {

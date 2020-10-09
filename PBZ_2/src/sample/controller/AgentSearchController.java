@@ -1,6 +1,5 @@
 package sample.controller;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,13 +10,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.database.Contract;
-import sample.database.Staff;
 
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
-public class ContractSearchController {
+public class AgentSearchController {
     @FXML
     private Button searchButton;
 
@@ -34,13 +32,10 @@ public class ContractSearchController {
     private TableView<Contract> resultTableView;
 
     @FXML
-    private TableColumn<Contract, String> idColumn;
+    private TableColumn<Contract, String> fullnameColumn;
 
     @FXML
     private TableColumn<Contract, Date> startDateColumn;
-
-    @FXML
-    private TableColumn<Contract, Date> endDateColumn;
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
@@ -48,12 +43,11 @@ public class ContractSearchController {
         organizationComboBox.setItems(organizations);
 
         searchButton.setOnAction(event -> {
-            ObservableList<Contract> contracts = Controller.getDatabase().searchContracts(organizationComboBox.getValue(),
-                                                                                          Date.valueOf(startDatePicker.getValue()));
+            ObservableList<Contract> contracts = Controller.getDatabase().searchAgents(organizationComboBox.getValue(),
+                    Date.valueOf(startDatePicker.getValue()));
             resultTableView.setItems(contracts);
-            idColumn.setCellValueFactory(new PropertyValueFactory<Contract, String>("id"));
+            fullnameColumn.setCellValueFactory(new PropertyValueFactory<Contract, String>("agentName"));
             startDateColumn.setCellValueFactory(new PropertyValueFactory<Contract, Date>("startDate"));
-            endDateColumn.setCellValueFactory(new PropertyValueFactory<Contract, Date>("endDate"));
         });
         cancelButton.setOnAction(event -> {
             try {
@@ -66,5 +60,4 @@ public class ContractSearchController {
             }
         });
     }
-
 }

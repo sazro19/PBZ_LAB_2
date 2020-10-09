@@ -17,7 +17,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 
-public class ContractSearchController {
+public class SumSearchController {
+
     @FXML
     private Button searchButton;
 
@@ -25,7 +26,7 @@ public class ContractSearchController {
     private Button cancelButton;
 
     @FXML
-    private ComboBox<String> organizationComboBox;
+    private ComboBox<String> categoryComboBox;
 
     @FXML
     private DatePicker startDatePicker;
@@ -34,27 +35,24 @@ public class ContractSearchController {
     private TableView<Contract> resultTableView;
 
     @FXML
-    private TableColumn<Contract, String> idColumn;
-
-    @FXML
     private TableColumn<Contract, Date> startDateColumn;
 
     @FXML
-    private TableColumn<Contract, Date> endDateColumn;
+    private TableColumn<Contract, String> sumColumn;
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
-        ObservableList<String> organizations = Controller.getDatabase().getOrganizationNameFromContracts();
-        organizationComboBox.setItems(organizations);
+        ObservableList<String> category = FXCollections.observableArrayList("Первая", "Вторая", "Высшая");
+        categoryComboBox.setItems(category);
 
         searchButton.setOnAction(event -> {
-            ObservableList<Contract> contracts = Controller.getDatabase().searchContracts(organizationComboBox.getValue(),
-                                                                                          Date.valueOf(startDatePicker.getValue()));
+            ObservableList<Contract> contracts = Controller.getDatabase().searchSum(categoryComboBox.getValue(),
+                    Date.valueOf(startDatePicker.getValue()));
             resultTableView.setItems(contracts);
-            idColumn.setCellValueFactory(new PropertyValueFactory<Contract, String>("id"));
             startDateColumn.setCellValueFactory(new PropertyValueFactory<Contract, Date>("startDate"));
-            endDateColumn.setCellValueFactory(new PropertyValueFactory<Contract, Date>("endDate"));
+            sumColumn.setCellValueFactory(new PropertyValueFactory<Contract, String>("sumCategory"));
         });
+
         cancelButton.setOnAction(event -> {
             try {
                 Parent root = FXMLLoader.load(Main.class.getResource("view/contractsList.fxml"));
@@ -66,5 +64,4 @@ public class ContractSearchController {
             }
         });
     }
-
 }

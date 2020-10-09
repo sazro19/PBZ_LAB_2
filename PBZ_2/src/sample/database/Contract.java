@@ -11,6 +11,7 @@ public class Contract {
     private String sumCategory;
     private String sumCase;
     private String staffName;
+    private String staffCategory;
 
     public Contract(String id, String organizationID, String agentName, Date startDate, Date endDate,
                     String sum_category, String sum_case, String staffName){
@@ -22,6 +23,19 @@ public class Contract {
         this.sumCategory = sum_category;
         this.sumCase = sum_case;
         this.staffName = staffName;
+    }
+
+    public Contract(String id, String organizationID, String agentName, Date startDate, Date endDate,
+                    String sum_category, String sum_case, String staffName, String staffCategory){
+        this.id = id;
+        this.organizationId = organizationID;
+        this.agentName = agentName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.sumCategory = sum_category;
+        this.sumCase = sum_case;
+        this.staffName = staffName;
+        this.staffCategory = staffCategory;
     }
 
     public String getId() {
@@ -55,6 +69,8 @@ public class Contract {
     public String getStaffName() {
         return staffName;
     }
+
+    public String getStaffCategory() { return  staffCategory; }
 
 
 
