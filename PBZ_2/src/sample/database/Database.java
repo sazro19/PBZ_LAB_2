@@ -2,15 +2,14 @@ package sample.database;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    private static final String url = "jdbc:mysql://localhost:3306/second_lab?useUnicode=true&serverTimezone=UTC";
-    private static final String user = "root";
-    private static final String password = "sasha19062001";
 
     private static Connection con;
     private static Statement stmt;
@@ -21,8 +20,9 @@ public class Database {
     private List<Contract> contractList = new ArrayList<>();
 
     public Database() throws SQLException, ClassNotFoundException {
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(MyApplicationContextConfiguration.class);
         try {
-            con = DriverManager.getConnection(url, user, password);
+            con = ctx.getBean(Connection.class);
             stmt = con.createStatement();
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();

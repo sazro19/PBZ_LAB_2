@@ -16,5 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org.springframework:spring-context:5.3.0" level="project" />
   </component>
 </module>

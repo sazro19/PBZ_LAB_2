@@ -1,6 +1,7 @@
 package sample.controller;
 
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import sample.Main;
 import sample.database.Database;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,6 +34,7 @@ public class Controller {
 
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
+
         database = new Database();
         organizationOperationButton.setOnAction(event -> {
             try {
